@@ -33,7 +33,7 @@ mpl_display_is_valid(void)
     // The getenv check is redundant but helps performance as it is much faster
     // than dlopen().
     if (getenv("DISPLAY")
-        && (libX11 = dlopen("libX11.so.6", RTLD_LAZY))) {
+        && (libX11 = dlopen("/nix/store/x9fw7rbdb34gq0f8q750kw344lbv9nk1-libX11-1.8.9/lib/libX11.so.6", RTLD_LAZY))) {
         typedef struct Display* (*XOpenDisplay_t)(char const*);
         typedef int (*XCloseDisplay_t)(struct Display*);
         struct Display* display = NULL;
@@ -52,7 +52,7 @@ mpl_display_is_valid(void)
     }
     void* libwayland_client;
     if (getenv("WAYLAND_DISPLAY")
-        && (libwayland_client = dlopen("libwayland-client.so.0", RTLD_LAZY))) {
+        && (libwayland_client = dlopen("/nix/store/7rnc20sb0h5zxqm5vims6mvi6gr3iy27-wayland-1.22.0/lib/libwayland-client.so.0", RTLD_LAZY))) {
         typedef struct wl_display* (*wl_display_connect_t)(char const*);
         typedef void (*wl_display_disconnect_t)(struct wl_display*);
         struct wl_display* display = NULL;
