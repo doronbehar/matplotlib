@@ -34,6 +34,7 @@
         # python -m pip install \
         #   --config-settings=setup-args="-Dsystem-freetype=true" \
         #   --config-settings=setup-args="-Dsystem-qhull=true" \
+        #   --config-settings=setup-args="-Db_lto=false" \
         #   --config-settings=builddir=build \
         #   --prefix out \
         #   --no-build-isolation \
