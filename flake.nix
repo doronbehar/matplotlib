@@ -42,6 +42,14 @@
         #   --no-build-isolation \
         #   ".[dev]" 
         #
+        #
+        # Run test(s) with (e.g):
+        #
+        #   pytest \
+        #     --import-mode=append \
+        #     --showlocals \
+        #     $INSTALLDIR/matplotlib/tests/test_ticker.py \
+        #     -k 'TestLogFormatterMathtext'
         INSTALLDIR = "dist/nix/${pkgs.python312.sitePackages}";
       };
     }
