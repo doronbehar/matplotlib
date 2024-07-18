@@ -6,6 +6,7 @@
   outputs = { self, nixpkgs, utils }: utils.lib.eachDefaultSystem (system:
     let
       pkgs = nixpkgs.legacyPackages.${system};
+      python = pkgs.python3;
     in
     {
       devShell = pkgs.mkShell {
@@ -13,23 +14,23 @@
         LIBX11_REPLACEMENT = "${pkgs.xorg.libX11}/lib/libX11.so.6";
         LIBWAYLAND_EPLACEMENT = "${pkgs.wayland}/lib/libwayland-client.so.0";
         nativeBuildInputs = [
-          pkgs.python312.pkgs.pytest
-          pkgs.python312.pkgs.meson-python
-          pkgs.python312.pkgs.pip
-          pkgs.python312.pkgs.mypy
-          pkgs.python312.pkgs.flake8
+          python.pkgs.pytest
+          python.pkgs.meson-python
+          python.pkgs.pip
+          python.pkgs.mypy
+          python.pkgs.flake8
           pkgs.ninja
         ]
-        ++ pkgs.python312.pkgs.matplotlib.nativeBuildInputs
+        ++ python.pkgs.matplotlib.nativeBuildInputs
         ;
         buildInputs = [
         ]
-        ++ pkgs.python312.pkgs.matplotlib.buildInputs
+        ++ python.pkgs.matplotlib.buildInputs
         ;
         propagatedBuildInputs = [
         ]
-        ++ pkgs.python312.pkgs.matplotlib.propagatedBuildInputs
-        ++ pkgs.python312.pkgs.matplotlib.dependencies
+        ++ python.pkgs.matplotlib.propagatedBuildInputs
+        ++ python.pkgs.matplotlib.dependencies
         ;
         # Install to this path with (in contrast to upstream's documentation):
         #
@@ -50,7 +51,7 @@
         #     --showlocals \
         #     $INSTALLDIR/matplotlib/tests/test_ticker.py \
         #     -k 'TestLogFormatterMathtext'
-        INSTALLDIR = "dist/nix/${pkgs.python312.sitePackages}";
+        INSTALLDIR = "dist/nix/${python.sitePackages}";
       };
     }
   );
