@@ -16,6 +16,8 @@
           pkgs.python312.pkgs.pytest
           pkgs.python312.pkgs.meson-python
           pkgs.python312.pkgs.pip
+          pkgs.python312.pkgs.mypy
+          pkgs.python312.pkgs.flake8
           pkgs.ninja
         ]
         ++ pkgs.python312.pkgs.matplotlib.nativeBuildInputs
