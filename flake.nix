@@ -27,7 +27,6 @@
         ++ pkgs.python312.pkgs.matplotlib.buildInputs
         ;
         propagatedBuildInputs = [
-
         ]
         ++ pkgs.python312.pkgs.matplotlib.propagatedBuildInputs
         ++ pkgs.python312.pkgs.matplotlib.dependencies
@@ -39,11 +38,11 @@
         #   --config-settings=setup-args="-Dsystem-qhull=true" \
         #   --config-settings=setup-args="-Db_lto=false" \
         #   --config-settings=builddir=build \
-        #   --prefix out \
+        #   --prefix dist/nix \
         #   --no-build-isolation \
         #   ".[dev]" 
         #
-        PYTHONPATH="dist/nix/${pkgs.python312.sitePackages}";
+        INSTALLDIR = "dist/nix/${pkgs.python312.sitePackages}";
       };
     }
   );
